@@ -2,7 +2,7 @@ import numpy as npy
 import matplotlib.pyplot as plt
 import statistics
 
-
+size_gen = 100
 data_a = []
 data_b = []
 data_y = []
@@ -19,10 +19,10 @@ gm_prom=0
 
 
 def generar_listado_a():
-    return list(npy.random.randint(low = 25,high=500,size=100))
+    return list(npy.random.randint(low = 25,high=500,size=size_gen))
 
 def generar_listado_b():
-    return list(npy.random.poisson(52, 100))
+    return list(npy.random.poisson(52, size_gen))
 
 
 
@@ -32,18 +32,18 @@ def generar_listado_y_hat(data_a):
     return data_y
      
 def generar_listado_error(data_b,data_y):
-    for n in range(100):         
+    for n in range(size_gen):         
         error.append(((data_y[n]-data_b[n])**2)/2)            
     return error
 
 
 def generar_listado_gradiente_m(data_a,data_b,data_y):
-    for n in range(100):         
+    for n in range(size_gen):         
         gradiente_m.append((data_y[n]-data_b[n])*data_a[n])            
     return gradiente_m
 
 def generar_listado_gradiente_b(data_b,data_y):
-    for n in range(100):         
+    for n in range(size_gen):         
         gradiente_b.append((data_y[n]-data_b[n]))            
     return gradiente_b     
 
